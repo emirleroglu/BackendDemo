@@ -4,6 +4,7 @@ package com.emirleroglu.backenddemo.models;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import java.util.HashMap;
 import java.util.List;
 
 @ApiModel(value = "Trip api documentation",description = "this is a demo api created for writing a frontend")
@@ -14,17 +15,17 @@ public class Trip {
     private String email;
     @ApiModelProperty(value = "Station list of trip object")
     private List<String> station;
-    @ApiModelProperty(value = "day list of trip object")
-    private List<String> time;
+    @ApiModelProperty(value = "Collection days and time of trip object")
+    private HashMap<String,String> dayAndTimeCollection;
 
     public Trip() {
     }
 
-    public Trip(Long id, String email, List<String> station, List<String> time) {
+    public Trip(Long id, String email, List<String> station, HashMap<String, String> dayAndTimeCollection) {
         this.id = id;
         this.email = email;
         this.station = station;
-        this.time = time;
+        this.dayAndTimeCollection = dayAndTimeCollection;
     }
 
     public Long getId() {
@@ -51,12 +52,13 @@ public class Trip {
         this.station = station;
     }
 
-    public List<String> getTime() {
-        return time;
+
+    public HashMap<String, String> getDayAndTimeCollection() {
+        return dayAndTimeCollection;
     }
 
-    public void setTime(List<String> time) {
-        this.time = time;
+    public void setDayAndTimeCollection(HashMap<String, String> dayAndTimeCollection) {
+        this.dayAndTimeCollection = dayAndTimeCollection;
     }
 
     @Override
@@ -65,7 +67,7 @@ public class Trip {
                 "id=" + id +
                 ", email='" + email + '\'' +
                 ", station=" + station +
-                ", time=" + time +
+                ", dayAndTimeCollection=" + dayAndTimeCollection +
                 '}';
     }
 }
