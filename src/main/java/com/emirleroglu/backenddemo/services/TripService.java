@@ -8,4 +8,7 @@ public interface TripService {
 
     public List<Trip> getTripAll();
 
+    public void addTrip(Trip trip);
+
+    public Trip getTripById(long id);
 }
