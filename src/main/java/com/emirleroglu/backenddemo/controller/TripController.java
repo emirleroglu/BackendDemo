@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 @Api(value = "Trip Api Documentation")
-@CrossOrigin
+@CrossOrigin(origins = "https://fierce-beyond-01272.herokuapp.com/")
 public class TripController {
 
     @Autowired
