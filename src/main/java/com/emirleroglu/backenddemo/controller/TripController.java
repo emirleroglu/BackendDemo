@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 @Api(value = "Trip Api Documentation")
+@CrossOrigin
 public class TripController {
 
     @Autowired
