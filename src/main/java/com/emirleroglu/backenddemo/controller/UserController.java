@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "https://fierce-beyond-01272.herokuapp.com/")
 public class UserController {
     @Autowired
     UserService myService;
