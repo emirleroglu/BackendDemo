@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
 
     public void addUser(User user) {
 
-        myUserRepository.save(new User(user.getId(), user.getEmail(), user.getPassword(), user.getActive()));
+        myUserRepository.save(new User(user.getEmail(), user.getPassword(), user.getActive()));
 
 
     }

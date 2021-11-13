@@ -8,23 +8,23 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(name = "email",nullable = false,unique = true)
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
-    @Column(name = "password",nullable = false)
+    @Column(name = "password", nullable = false)
     private String password;
-    @Column(name = "isactive",nullable = false)
+    @Column(name = "isactive", nullable = false)
     private Boolean isActive;
 
 
-    public User(Long id, String email, String password, Boolean isActive) {
-        this.id = id;
+    public User(String email, String password, Boolean isActive) {
+
         this.email = email;
         this.password = password;
         this.isActive = isActive;
     }
 
     public User() {
-        
+
     }
 
     public Long getId() {
