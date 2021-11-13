@@ -1,9 +1,18 @@
 package com.emirleroglu.backenddemo.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "users")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name = "email",nullable = false,unique = true)
     private String email;
+    @Column(name = "password",nullable = false)
     private String password;
+    @Column(name = "isactive",nullable = false)
     private Boolean isActive;
 
 
