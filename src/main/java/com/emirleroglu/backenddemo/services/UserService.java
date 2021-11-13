@@ -4,10 +4,10 @@ import com.emirleroglu.backenddemo.models.User;
 
 import java.util.List;
 
-public interface UserService {
+public interface UserService  {
 
-public void addUser (User user) ;
+    public void addUser (User user) ;
 
-public List<User> getUserList () ;
+    public List<User> getUserList ();;
 }
 
