@@ -7,8 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -24,9 +26,6 @@ public class UserServiceImpl implements UserService {
 
             myUserRepository.findAll().forEach(userList::add);
 
-            if (userList.isEmpty()) {
-                return null;
-            }
 
             return userList;
         } catch (Exception e) {
@@ -36,10 +35,27 @@ public class UserServiceImpl implements UserService {
 
     }
 
-    public void addUser(User user) {
+    public User addUser(User user) {
+        try {
 
-        myUserRepository.save(new User(user.getEmail(), user.getPassword(), user.getActive()));
+            return myUserRepository.save(new User(user.getEmail(), user.getPassword(), user.getActive()));
 
+
+        } catch (Exception e) {
+            return null;
+
+        }
+
+
+    }
+
+    public User getUserById(Long id) {
+        Optional<User> userData = myUserRepository.findById(id);
+        if (userData.isPresent()) {
+            return userData.get();
+        } else {
+            return null;
+        }
 
     }
 
