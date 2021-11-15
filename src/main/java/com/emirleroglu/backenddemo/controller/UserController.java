@@ -50,7 +50,7 @@ public class UserController {
         }
 
 
-        return new ResponseEntity<>(user, HttpStatus.CREATED);
+        return new ResponseEntity<>(myService.addUser(user), HttpStatus.CREATED);
 
     }
     @ApiOperation(value = "delete function by id")

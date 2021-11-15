@@ -37,8 +37,8 @@ public class UserServiceImpl implements UserService {
 
     public User addUser(User user) {
         try {
-
-            return myUserRepository.save(new User(user.getEmail(), user.getPassword(), user.getActive()));
+            User tempUser = myUserRepository.save(new User(user.getEmail(), user.getPassword(), user.getActive()));
+            return tempUser;
 
 
         } catch (Exception e) {
