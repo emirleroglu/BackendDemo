@@ -59,5 +59,15 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    public ResponseEntity<User> deleteUserById(Long id) {
+        try {
+            myUserRepository.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
 
+
+
+    }
 }

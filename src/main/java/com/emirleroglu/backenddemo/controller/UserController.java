@@ -38,7 +38,7 @@ public class UserController {
         if (myService.getUserById(id) == null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }else {
-            return new ResponseEntity<>(myService.getUserById(id),HttpStatus.FOUND);
+            return new ResponseEntity<>(myService.getUserById(id),HttpStatus.OK);
         }
     }
 
@@ -48,9 +48,15 @@ public class UserController {
         if (myService.addUser(user) == null) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+        myService.addUser(user);
 
-        return new ResponseEntity<>(myService.addUser(user), HttpStatus.CREATED);
+        return new ResponseEntity<>(user, HttpStatus.CREATED);
 
+    }
+    @ApiOperation(value = "delete function by id")
+    @DeleteMapping("/users/{id}")
+    public ResponseEntity<User> deleteUSerById(@PathVariable("id") long id){
+        return myService.deleteUserById(id);
     }
 
 }
