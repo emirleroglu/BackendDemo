@@ -5,6 +5,7 @@ import com.emirleroglu.backenddemo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
@@ -14,9 +15,12 @@ import java.util.Optional;
 
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService{
     @Autowired
     UserRepository myUserRepository;
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
+
 
     List<User> myList = new ArrayList<>();
 
@@ -36,8 +40,10 @@ public class UserServiceImpl implements UserService {
     }
 
     public User addUser(User user) {
+
         try {
-            User tempUser = myUserRepository.save(new User(user.getEmail(), user.getPassword(), user.getActive()));
+            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+            User tempUser = myUserRepository.save(user);
             return tempUser;
 
 
@@ -70,4 +76,12 @@ public class UserServiceImpl implements UserService {
 
 
     }
+
+
+   public void login (User user) {
+
+
+   }
+
+
 }
